@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 import Logo from './logo';
 
 const routes = [
@@ -19,17 +20,23 @@ export default function Header() {
      px-3 sm:px-9'
     >
       <Logo />
-      <nav>
-        <ul className='flex gap-x-6 text-sm'>
+      <nav className='h-full'>
+        <ul className='flex h-full gap-x-6 text-sm'>
           {routes.map((route) => (
             <li
               key={route.path}
-              className={clsx('transition hover:text-white', {
+              className={clsx('relative flex items-center transition hover:text-white', {
                 'text-white': activePathname === route.path,
                 'text-white/50': activePathname !== route.path,
               })}
             >
               <Link href={route.path}>{route.name}</Link>
+              {activePathname === route.path && (
+                <motion.div
+                  layoutId='header-active-link'
+                  className='absolute bottom-0 h-1 w-full bg-accent'
+                ></motion.div>
+              )}
             </li>
           ))}
         </ul>

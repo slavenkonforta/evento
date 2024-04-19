@@ -19,7 +19,7 @@ export default async function EventsPage({ params }: EventsPageProps) {
 
   return (
     <main className='flex flex-col items-center px-[20px] py-24'>
-      <H1>{city === 'all' ? 'All Events' : `Events in ${capitalizedCity}`}</H1>
+      <H1 className='mb-28'>{city === 'all' ? 'All Events' : `Events in ${capitalizedCity}`}</H1>
       <EventsList events={events} />
     </main>
   );

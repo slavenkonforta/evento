@@ -28,6 +28,18 @@ export const generateMetadata = ({ params }: MetadataProps): Metadata => {
   };
 };
 
+export async function generateStaticParams() {
+  // top 100 most popular events
+  return [
+    {
+      slug: 'comedy-extravaganza',
+    },
+    {
+      slug: 'dj-practice-session',
+    },
+  ];
+}
+
 export default async function EventPage({ params }: EventPageProps) {
   const { slug } = params;
 

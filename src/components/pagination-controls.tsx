@@ -13,13 +13,13 @@ const linkStyles = `flex items-center gap-x-2 bg-white/5 px-5 py-3 text-white ro
 export default function PaginationControls({ previousPath, nextPath }: PaginationControlsProps) {
   return (
     <section className='flex w-full'>
-      {previousPath && (
+      {!!previousPath && (
         <Link href={previousPath} className={cn('mr-auto', linkStyles)}>
           <ArrowLeftIcon />
           Previous
         </Link>
       )}
-      {nextPath && (
+      {!!nextPath && (
         <Link href={nextPath} className={cn('ml-auto', linkStyles)}>
           Next
           <ArrowRightIcon />

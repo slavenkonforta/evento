@@ -1,6 +1,14 @@
 import H1 from '@/components/h1';
 import { EventoEvent } from '@/lib/types';
+import { capitalize, getEvent } from '@/lib/utils';
+import { Metadata } from 'next';
 import Image from 'next/image';
+
+type MetadataProps = {
+  params: {
+    slug: string;
+  };
+};
 
 type EventPageProps = {
   params: {
@@ -8,12 +16,22 @@ type EventPageProps = {
   };
 };
 
+export const generateMetadata = ({ params }: MetadataProps): Metadata => {
+  const { slug } = params;
+  const title = slug
+    .split('-')
+    .map((word) => capitalize(word))
+    .join(' ');
+
+  return {
+    title,
+  };
+};
+
 export default async function EventPage({ params }: EventPageProps) {
   const { slug } = params;
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
-  const event: EventoEvent = await response.json();
+
+  const event = await getEvent(slug);
 
   return (
     <main>

@@ -54,7 +54,6 @@ export default async function EventPage({ params }: EventPageProps) {
           fill
           quality={50}
           priority
-          sizes='(max-width: 1280px) 100vw, 1280px'
           className='z-0 object-cover blur-3xl'
         />
         <div className='relative z-10 flex flex-col gap-6 lg:flex-row lg:gap-16'>
